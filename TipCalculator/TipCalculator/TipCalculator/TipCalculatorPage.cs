@@ -46,7 +46,6 @@ namespace TipCalculator
             };
 
             InitializeGrid();
-            
         }
         
         private void InitializeGrid()
@@ -84,7 +83,7 @@ namespace TipCalculator
             grid.Children.Add(amountPerPersonTextLabel, 0, 7);
             grid.Children.Add(amountPerPersonValueLabel, 1, 7);
             // Accomodate iPhone status bar.
-            //this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+            this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
             // Build the page.
             this.Content = grid;
@@ -93,9 +92,9 @@ namespace TipCalculator
         private void InitializeElements()
         {
             billEntryCell = CreateEntryCell();
-
             tipPersentageLabel = CreateLabel("Your tip rate, 0 %:");
-            tipPersentageLabel.SetBinding(Label.TextProperty, "TipPersentage");
+            tipPersentageLabel.BindingContext = tipPersentageSlider;
+            
             tipPersentageSlider = CreateSlider();
             tipPersentageSlider.ValueChanged += SliderValueChanged;
 
@@ -161,7 +160,6 @@ namespace TipCalculator
             return new Label
             {
                 Text = labelText,
-                //FontSize = 10,
                 FontAttributes = FontAttributes.Bold,
                 LineBreakMode = LineBreakMode.MiddleTruncation,
                 TextColor = Color.Aqua,
@@ -174,7 +172,7 @@ namespace TipCalculator
         {
             return new EntryCell()
             {
-                Label = "BillCount",
+                Label = "Bill Count: ",
                 XAlign = TextAlignment.Center,
                 Keyboard = Keyboard.Numeric,
                 Placeholder = "0"
