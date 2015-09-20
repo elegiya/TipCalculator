@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
+    <Content Include="Resources\FastTipCalculator.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TipCalculator\TipCalculator.csproj">
